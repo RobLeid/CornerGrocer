@@ -9,6 +9,7 @@
 #include <string>
 #include <fstream>
 #include <cctype>
+#include <iostream>
 
 using namespace std;
 
@@ -32,6 +33,7 @@ bool ItemTracker::isEmpty() const {
 // Return - int (# from map)
 int ItemTracker::getCount(const string& item) const {
     // TODO create function
+
     // run titleCase on input
     // use item as key value for lookup
     // use try/catch block with itemFrequency.at(item) and catch out_of_range, and return 0 if out of range
@@ -41,8 +43,9 @@ int ItemTracker::getCount(const string& item) const {
 // Parameters - none
 // Return - none (uses cout)
 void ItemTracker::printAll() const {
-    // TODO create function
-    // loop through map and output key and values
+    for (const auto& [item, count] : itemFrequency) {
+        cout << item << " " << count << endl;
+    }
 }
 
 // prints all items, with the counts as a symbol
