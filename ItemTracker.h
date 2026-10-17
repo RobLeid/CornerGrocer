@@ -19,7 +19,7 @@ class ItemTracker {
         bool isEmpty() const; // checks if the map actually contains data
         int getCount(const string& item) const; // gets the count of an item based on user input
         void printAll() const; // prints all items with all the counts
-        void printHistogram(char symbol = '*') const; // prints all items, witht he counts as a symbol
+        void printHistogram(char symbol = '*') const; // prints all items, with the counts as a symbol
 
 
     private:
