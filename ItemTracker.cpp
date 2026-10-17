@@ -11,6 +11,7 @@
 #include <cctype>
 #include <iostream>
 #include <iomanip>
+#include <stdexcept>
 
 using namespace std;
 
@@ -36,14 +37,9 @@ int ItemTracker::getCount(const string& item) const {
     try {
         return itemFrequency.at(titleCase(item));
     }
-    catch (const out_of_range){
+    catch (const out_of_range&){
         return 0;
     }
-
-
-    // run titleCase on input
-    // use item as key value for lookup
-    // use try/catch block with itemFrequency.at(item) and catch out_of_range, and return 0 if out of range
 }
 
 // prints all items with all the counts
@@ -66,8 +62,6 @@ void ItemTracker::printHistogram(char symbol) const {
         }
         cout << endl;
     }
-    // similar to printAll() except instead of printing the values it prints a character
-    // will need to think about formatting here with different word lengths
 }
 
 // helper function to make everything title case
@@ -79,7 +73,7 @@ string ItemTracker::titleCase(const string& rawString) const {
     if (convertedString.empty()) {
         return convertedString;
     }
-    // convert first charater to upper
+    // convert first character to upper
     convertedString[0] = toupper(convertedString[0]);
 
     // convert every character from index i -> end to lower
