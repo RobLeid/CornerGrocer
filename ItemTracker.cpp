@@ -10,6 +10,7 @@
 #include <fstream>
 #include <cctype>
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -32,7 +33,13 @@ bool ItemTracker::isEmpty() const {
 // Parameters - item (input from user)
 // Return - int (# from map)
 int ItemTracker::getCount(const string& item) const {
-    // TODO create function
+    try {
+        return itemFrequency.at(titleCase(item));
+    }
+    catch (const out_of_range){
+        return 0;
+    }
+
 
     // run titleCase on input
     // use item as key value for lookup
@@ -52,7 +59,13 @@ void ItemTracker::printAll() const {
 // Parameters - char (symbol used to print, defaults to a *)
 // Return - none (uses cout)
 void ItemTracker::printHistogram(char symbol) const {
-    // TODO create function
+    for (const auto& [item, count] : itemFrequency) {
+        cout << setw(15) << item << " ";
+        for (int i = 0; i < count; ++i){
+            cout << symbol;
+        }
+        cout << endl;
+    }
     // similar to printAll() except instead of printing the values it prints a character
     // will need to think about formatting here with different word lengths
 }
