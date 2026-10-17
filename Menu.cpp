@@ -7,6 +7,7 @@
 
 #include "Menu.h"
 #include "ItemTracker.h"
+#include <iostream>
 
 using namespace std;
 
@@ -44,19 +45,22 @@ int Menu::getMenuChoice() const {
 // Parameters: none
 // Return: none (uses cout)
 void Menu::itemLookup() const {
-    // TODO create function
+    string userItem;
+    cout << "Please enter an item name: ";
+    cin >> userItem;
+    cout << userItem << ": " << tracker->getCount(userItem) << endl;
 }
 
 // Option 2: prints every item in the tracker alongside its purchase count
 // Parameters: none
 // Return: none (uses cout)
 void Menu::showAll() const {
-    // TODO create function
+    tracker->printAll();
 }
 
 // Option 3: prints every item alongside asterisks representing its purchase count
 // Parameters: none
 // Return: none (uses cout)
 void Menu::showHistogram() const {
-    // TODO create function
+    tracker->printHistogram('-');
 }
