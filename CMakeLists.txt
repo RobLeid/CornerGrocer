@@ -3,4 +3,8 @@ project(CornerGrocer)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CornerGrocer main.cpp)
+add_executable(CornerGrocer main.cpp
+        Menu.cpp
+        Menu.h
+        ItemTracker.cpp
+        ItemTracker.h)
