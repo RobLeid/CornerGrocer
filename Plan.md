@@ -35,5 +35,6 @@ Classes
     - lookups for the map
       - include function to print out histogram based on values
   - should standardize all the item names to title case, both upon reading from file and upon user input
-  - this should probably load first, there's no need for a menu if no data. Then it gets passed to Menu by reference 
+  - this should probably load first, there's no need for a menu if no data. Then it gets passed to Menu
+  - was originally going to pass by reference, but was getting this error and didn't know how to resolve so I decided to use a pointer: "Constructor for 'Menu' must explicitly initialize the reference member 'tracker'" 
     
