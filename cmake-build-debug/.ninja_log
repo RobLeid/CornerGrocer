@@ -1,0 +1,5 @@
+# ninja log v5
+0	820	1792272827419336698	CMakeFiles/CornerGrocer.dir/Menu.cpp.o	ec9738c00c746712
+0	841	1792272827453051917	CMakeFiles/CornerGrocer.dir/main.cpp.o	425796cbd799f4bd
+2	968	1792272827579515768	CMakeFiles/CornerGrocer.dir/ItemTracker.cpp.o	71881329cc64ba92
+969	1161	1792272827762664306	CornerGrocer	1e384d72ebe500e2

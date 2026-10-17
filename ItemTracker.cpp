@@ -16,11 +16,8 @@ using namespace std;
 // Parameters: inputFileName - used to create map
 // Return: nothing
 ItemTracker::ItemTracker(const string& inputFileName) {
-    // TODO Create constructor
-    // Creates map
-    // calls loadFromFile using input file name
-    // loops through file until end, each time reading in item name, using title case function, and writing to map, or incrementing the value in the map
-    // use writeBackup function to using an outputFileName
+    loadFromFile(inputFileName);
+    writeBackup("frequency.dat");
 }
 
 // checks if the map actually contains data
@@ -62,11 +59,14 @@ void ItemTracker::printHistogram(char symbol) const {
 // Return - string (converted string)
 string ItemTracker::titleCase(const string& rawString) const {
     string convertedString = rawString;
+    // return early if string is empty to avoid out_of_range errors
     if (convertedString.empty()) {
         return convertedString;
     }
+    // convert first charater to upper
     convertedString[0] = toupper(convertedString[0]);
 
+    // convert every character from index i -> end to lower
     for (int i = 1; i < convertedString.size(); ++i) {
         convertedString[i] = tolower(convertedString[i]);
     }
@@ -89,11 +89,25 @@ void ItemTracker::loadFromFile(const string& inputFileName) {
     while (inputFile >> item){
         itemFrequency[titleCase(item)]++;
     }
+
+    inputFile.close();
 }
 
 // writes the backup data to .dat file
 // Parameters - string outputFileName
 // Return - none
 void ItemTracker::writeBackup(const string& outputFileName) const {
-    // TODO create function
+    ofstream outputFile;
+    outputFile.open(outputFileName);
+
+    if (!outputFile.is_open()) {
+        return;
+    }
+
+    // loop through the map and write to outputFile
+    for (const auto& [item, count] : itemFrequency) {
+        outputFile << item << " " << count << endl;
+    }
+
+    outputFile.close();
 }
