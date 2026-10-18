@@ -8,6 +8,7 @@
 #include "Menu.h"
 #include "ItemTracker.h"
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -22,14 +23,21 @@ Menu::Menu(const ItemTracker& tracker) {
 // Parameters: none
 // Return: none
 void Menu::run() {
-    // TODO create function
+    int userChoice;
+    displayMenu();
+    userChoice = getMenuChoice();
+
 }
 
 // Prints the four menu options to the console
 // Parameters: none
 // Return: none (uses cout)
 void Menu::displayMenu() const {
-    // TODO create function
+    cout << "\n=== Corner Grocer Menu ===" << endl;
+    cout << "1. Look up an item's frequency" << endl;
+    cout << "2. List all items and frequencies" << endl;
+    cout << "3. Show histogram" << endl;
+    cout << "4. Exit" << endl;
 }
 
 // Prompts the user for a menu choice and validates it is an integer in range 1-4
@@ -37,7 +45,19 @@ void Menu::displayMenu() const {
 // Return: int (the validated menu choice)
 int Menu::getMenuChoice() const {
     int userChoice = 0;
-    // TODO create function
+    while (userChoice < 1 || userChoice > 4) {
+        cout << "Enter your choice (1-4): ";
+        cin >> userChoice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');    // discard the bad input
+            cout << "Invalid input. Please enter a number (1-4)." << endl;
+        }
+        else if (userChoice < 1 || userChoice > 4) {
+            cout << "Please enter a number between 1 and 4." << endl;
+        }
+    }
     return userChoice;
 }
 

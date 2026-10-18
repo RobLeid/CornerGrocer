@@ -14,7 +14,7 @@ using namespace std;
 
 int main() {
     ItemTracker tracker("CS210_Project_Three_Input_File.txt");
-    tracker.printHistogram('-');
-    cout << tracker.getCount("eggs");
+    Menu cornerGrocer(tracker);
+    cornerGrocer.run();
     return 0;
 }
