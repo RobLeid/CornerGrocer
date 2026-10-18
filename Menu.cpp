@@ -23,9 +23,24 @@ Menu::Menu(const ItemTracker& tracker) {
 // Parameters: none
 // Return: none
 void Menu::run() {
-    int userChoice;
-    displayMenu();
-    userChoice = getMenuChoice();
+    int userChoice = 0;
+    while (userChoice != 4) {
+        displayMenu();
+        userChoice = getMenuChoice();
+        switch (userChoice) {
+            case 1:
+                itemLookup();
+                break;
+            case 2:
+                showAll();
+                break;
+            case 3:
+                showHistogram();
+                break;
+            case 4:
+                break; // exits program
+        }
+    }
 
 }
 

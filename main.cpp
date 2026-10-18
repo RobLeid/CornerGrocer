@@ -14,7 +14,14 @@ using namespace std;
 
 int main() {
     ItemTracker tracker("CS210_Project_Three_Input_File.txt");
+
+    if (tracker.isEmpty()) {
+        cout << "Error: input file could not be loaded or was empty." << endl;
+        return 1;
+    }
+
     Menu cornerGrocer(tracker);
     cornerGrocer.run();
+    cout << "Goodbye!";
     return 0;
 }
